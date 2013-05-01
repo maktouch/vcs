@@ -200,24 +200,24 @@ abstract class AbstractSvn extends AbstractClient
             $path = new VcsFileInfo($path, array($head->getName(), $head->getType()));
         }
 
-        if ($path->inBranch()) {
-            $branchName = $path->getReferenceName();
+        // if ($path->inBranch()) {
+        //     $branchName = $path->getReferenceName();
 
-            if ('trunk' === $branchName) {
-                $basePath = $this->basePaths['trunk'];
-            } else {
-                $basePath = $this->basePaths['branches'] . '/' . $branchName;
-            }
-        } elseif ($path->inTag()) {
-            $tagName = $path->getReferenceName();
+        //     if ('trunk' === $branchName) {
+        //         $basePath = $this->basePaths['trunk'];
+        //     } else {
+        //         $basePath = $this->basePaths['branches'] . '/' . $branchName;
+        //     }
+        // } elseif ($path->inTag()) {
+        //     $tagName = $path->getReferenceName();
 
-            $basePath = $this->basePaths['tags'] . '/' . $tagName;
-        }
+        //     $basePath = $this->basePaths['tags'] . '/' . $tagName;
+        // }
 
         $retval = $this->url;
-        if ($basePath) {
-            $retval.= '/' . $basePath;
-        }
+        // if ($basePath) {
+        //     $retval.= '/' . $basePath;
+        // }
 
         $retval.= '/' . ltrim($path->getPathname(), '/');
         $retval = rtrim($retval, '/');
